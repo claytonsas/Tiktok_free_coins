@@ -1,5 +1,5 @@
 # Tiktok_free_coins Recharge page 
-✔️ **PURCHASE (18$): Send message to https://t.me/tyalc
+✔️ **PURCHASE (18$) Send message here https://t.me/tyalc
 ⚠️ ATTENTION! I'm not advising or encouraging anyone to engage in this activity; I'm simply promoting my product!⚠️
 
 It’s easy to scam people during live streams and make a lot of money on tiktok or juste prank friends
