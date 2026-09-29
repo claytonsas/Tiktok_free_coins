@@ -1,0 +1,49 @@
+# Configuration du bot TAO — copiez ce fichier en config.yaml puis modifiez-le.
+# Toute clé absente garde sa valeur par défaut.
+
+exchange:
+  id: binance            # tout exchange supporté par ccxt : binance, kraken, bybit, okx, kucoin...
+  symbol: TAO/USDT
+  btc_symbol: BTC/USDT   # utilisé par le filtre de tendance BTC
+  timeframe: 4h          # 1h = plus de trades et de bruit ; 1d = moins de trades, tendances longues
+  sandbox: false         # true = testnet de l'exchange (si disponible)
+  fee_rate: 0.001        # frais par ordre (0.1 %)
+  slippage: 0.0005       # glissement estimé des ordres au marché
+  min_notional: 10       # montant minimum d'un ordre, en USDT
+
+strategy:
+  ema_fast: 21
+  ema_mid: 50
+  ema_slow: 200
+  rsi_period: 14
+  rsi_pullback: 40       # entrée « pullback » quand le RSI repasse au-dessus de ce niveau
+  rsi_max_entry: 80      # pas d'achat au-dessus (surchauffe)
+  atr_period: 14
+  adx_period: 14
+  adx_min: 20            # force de tendance minimale pour un breakout
+  breakout_period: 20
+  volume_period: 20
+  volume_mult: 1.5       # volume minimum d'un breakout (x la moyenne)
+  max_atr_pct: 0.12      # pas d'achat si l'ATR dépasse 12 % du prix (volatilité extrême)
+  stop_atr_mult: 2.5     # stop initial = entrée - 2.5 x ATR
+  trail_atr_mult: 4.0    # stop suiveur = plus haut - 4 x ATR
+  breakeven_r: 1.5       # stop remonté au prix d'entrée après +1.5 R
+  breakeven_buffer_pct: 0.003
+  use_btc_filter: true   # n'acheter que si le BTC est au-dessus de son EMA200
+  btc_ema: 200
+
+risk:
+  risk_per_trade: 0.01   # 1 % du capital risqué par trade (2 % = agressif)
+  max_position_pct: 0.95
+  max_drawdown: 0.25     # kill switch : tout est vendu à -25 % depuis le plus haut
+  max_daily_loss: 0.05
+  cooldown_bars: 3       # pause après une perte
+
+backtest:
+  initial_capital: 1000
+
+bot:
+  poll_seconds: 60       # fréquence de vérification du prix et du stop
+  warmup_bars: 500       # historique chargé pour calculer les indicateurs
+  state_dir: state
+  paper_start_balance: 1000
