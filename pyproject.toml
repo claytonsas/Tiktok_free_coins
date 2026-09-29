@@ -1,0 +1,8 @@
+[project]
+name = "tao-bot"
+version = "0.1.0"
+description = "Bot de trading crypto spécialisé TAO (Bittensor)"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
